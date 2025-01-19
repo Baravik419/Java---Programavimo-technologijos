@@ -3,7 +3,6 @@ package courseWork.fxControllers;
 
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import javafx.event.ActionEvent;
 
 
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
-import javafx.scene.control.skin.TextFieldSkin;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -30,7 +28,6 @@ import java.util.ResourceBundle;
 import courseWork.StartGUI;
 import courseWork.hibernateControllers.CustomHibernate;
 import courseWork.hibernateControllers.GenericHibernate;
-import courseWork.hibernateControllers.UserHibernate;
 import courseWork.Model.*;
 import courseWork.Model.Enum.PublicationStatus;
 
@@ -52,7 +49,7 @@ public class Main implements Initializable {
     public TextField nameField;
 
     @FXML
-    public PasswordField pswField;
+    public TextField pswField;
 
     @FXML
     public TextField surnameField;
@@ -499,9 +496,9 @@ public class Main implements Initializable {
 
     public void loadProductForm() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("productWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("/fxmls/productWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Book Exchange Test");
+        stage.setTitle("Book exchange platform");
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
@@ -517,20 +514,20 @@ public class Main implements Initializable {
         Publication publicationFromDb = hibernate.getEntityById(Publication.class, publication.getId());
 
         publicationBio.setText(
-                "Title :" + publicationFromDb.getTitle() + "\n" +
-                        "Year:" + publicationFromDb.getYear());
+                "Title: " + publicationFromDb.getTitle() + "\n" +
+                        "Year: " + publicationFromDb.getYear());
 
         ownerBio.setText(publicationFromDb.getOwner().getName());
     }
 
     public void loadReviewWindow() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("UserReview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("/fxmls/UserReview.fxml"));
         Parent parent = fxmlLoader.load();
         UserReview userReview = fxmlLoader.getController();
         userReview.setData(entityManagerFactory, currentUser, availablePublicationList.getSelectionModel().getSelectedItem().getOwner());
         Stage stage = new Stage();
         Scene scene = new Scene(parent);
-        stage.setTitle("Book Exchange Test");
+        stage.setTitle("Book exchange platform");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
@@ -574,13 +571,13 @@ public class Main implements Initializable {
     }
 
     private void loadHistory(int id, User currentUser) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("history.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("/fxmls/History.fxml"));
         Parent parent = fxmlLoader.load();
         History history = fxmlLoader.getController();
         history.setData(entityManagerFactory, currentUser, id);
         Stage stage = new Stage();
         Scene scene = new Scene(parent);
-        stage.setTitle("Book Exchange Test");
+        stage.setTitle("Book exchange platform");
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();

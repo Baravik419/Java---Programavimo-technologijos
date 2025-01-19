@@ -33,7 +33,7 @@ public class UserHibernate {
             return (User) q.getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
-            FxUtils.generateAlert(Alert.AlertType.ERROR, "LOGIN error", "Error during LOGIN operation");
+            FxUtils.generateAlert(Alert.AlertType.ERROR, "Login error", "Wrong username or password! Try again.");
             return null;
         } finally {
             if (entityManager != null) entityManager.close();

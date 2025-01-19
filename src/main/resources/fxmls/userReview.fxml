@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="courseWork.fxControllers.UserReview"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <TreeView fx:id="userReview" layoutX="13.0" layoutY="14.0" onMouseClicked="#loadComment" prefHeight="191.0" prefWidth="574.0">
+            <contextMenu>
+                <ContextMenu fx:id="commentContextMenu">
+                    <items>
+                        <MenuItem fx:id="deleteItem" mnemonicParsing="false" onAction="#deleteComment" text="Delete" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TreeView>
+        <TextArea fx:id="commentBody" layoutX="16.0" layoutY="259.0" prefHeight="98.0" prefWidth="567.0" />
+        <TextField fx:id="commentTitle" layoutX="16.0" layoutY="215.0" prefHeight="26.0" prefWidth="567.0" />
+        <Button layoutX="228.0" layoutY="360.0" mnemonicParsing="false" onAction="#insertComment" text="Add" />
+        <Button fx:id="updateButton" layoutX="300.0" layoutY="360.0" mnemonicParsing="false" onAction="#updateComment" text="Update" />
+    </children>
+</AnchorPane>

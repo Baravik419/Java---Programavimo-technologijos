@@ -30,7 +30,7 @@ public class Login {
     public void validateAndConnect() throws IOException {
         User user = userHib.getEntityByLogin(loginTextField.getText(), passwordTextField.getText());
         if (user != null) {
-            FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("Main.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("/fxmls/Main.fxml"));
             Parent parent = fxmlLoader.load();
 
             Main main = fxmlLoader.getController();
@@ -38,7 +38,7 @@ public class Login {
 
             Scene scene = new Scene(parent);
             var stage = (Stage) loginTextField.getScene().getWindow();
-            stage.setTitle("Book Exchange Test");
+            stage.setTitle("Book exchange platform");
             stage.setScene(scene);
             stage.show();
 
@@ -47,9 +47,9 @@ public class Login {
 
     public void registerNewUser() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("Register.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartGUI.class.getResource("/fxmls/Register.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Book Exchange Test");
+        stage.setTitle("Book exchange platform");
         stage.setScene(scene);
         stage.show();
     }
